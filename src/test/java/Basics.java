@@ -2,7 +2,10 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
+
+import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
 public class Basics {
 
@@ -166,5 +169,41 @@ public class Basics {
     driver.quit();
 
 }
+
+    @Test
+    public void RelativeLocator() throws InterruptedException {
+
+        driver.get("https://www.globalsqa.com/angularJs-protractor/registration-login-example/#/login");
+        Thread.sleep(2000);
+
+        WebElement username = driver.findElement(By.id("username"));
+        username.sendKeys("user");
+
+        WebElement passwordfield= driver.findElement(with(By.tagName("input")).below(username));
+
+        passwordfield.sendKeys("shorooq");
+        Thread.sleep(2000);
+        driver.quit();
+
+
+    }
+
+    @Test
+    public void Action() throws InterruptedException{
+        driver.get("https://www.globalsqa.com/angularJs-protractor/registration-login-example/#/login");
+        Thread.sleep(2000);
+        WebElement username = driver.findElement(By.id("username"));
+        WebElement Password = driver.findElement(By.name("password"));
+        WebElement LoginButton = driver.findElement(By.tagName("button"));
+        Actions actions = new Actions(driver);
+        actions.sendKeys(username,"shorooq").perform();
+        actions.sendKeys(Password,"pass").perform();
+        actions.click(LoginButton).perform();
+        LoginButton.click();
+        Thread.sleep(2000);
+        driver.quit();
+
+
+    }
 
 }
