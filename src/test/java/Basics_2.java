@@ -14,14 +14,15 @@ import java.util.List;
 public class Basics_2 {
 
 
- WebDriver driver = new ChromeDriver();
+    WebDriver driver = new ChromeDriver();
 
 
     @Test
     public void ElementScreenshot() throws InterruptedException{
         driver.manage().window().maximize();
         driver.get("https://www.globalsqa.com/samplepagetest/");
-        Thread.sleep(2000);
+        Thread.sleep(2000); WebDriver driver = new ChromeDriver();
+
         WebElement Logo = driver.findElement(By.id("logo"));
         File file =Logo.getScreenshotAs(OutputType.FILE);
         try{
@@ -118,7 +119,7 @@ public class Basics_2 {
         driver.findElement(By.id("login-button")).click();
         String logo=    driver.findElement(By.className("app_logo")).getText();
         SoftAssert soft = new SoftAssert();
-        soft.assertEquals(logo,"Swafgg Labs","Logo is not right");
+        soft.assertEquals(logo,"Swagg Labs","Logo is not right");
         driver.findElement(By.xpath("//*[@id=\"item_4_title_link\"]/div")).click();
         Thread.sleep(2000);
         driver.quit();
