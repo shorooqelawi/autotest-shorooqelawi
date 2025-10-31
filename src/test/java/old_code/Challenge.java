@@ -1,16 +1,10 @@
-import org.apache.commons.io.FileUtils;
+package old_code;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import org.openqa.selenium.Keys;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 
 public class Challenge {
