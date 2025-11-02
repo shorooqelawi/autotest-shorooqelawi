@@ -18,26 +18,30 @@ public class Login extends TestBase_1 {
     private By password = By.id("password");
     // If this is an ID (commonly is), prefer By.id
     private By loginButton = By.id("login-button");
+    // when i use assertion i locat with public like this
+    public  By logo = By.className("app_logo");
 
-    public void enterUsername(String username) {
+
+    private void enterUsername(String username) {
         driver.findElement(this.username).sendKeys(username);
     }
 
-    public void enterPassword(String password) {
+    private void enterPassword(String password) {
         driver.findElement(this.password).sendKeys(password);
     }
 
-    public void TapLoginButton() {
+    private void TapLoginButton() {
         driver.findElement(this.loginButton).click();
     }
-public void login(String username, String password) {
-    enterUsername(username);
-    enterPassword(password);
-    TapLoginButton();
-}
+    public void login(String username, String password) {
+        //best
+       enterUsername(username);
+       enterPassword(password);
+       TapLoginButton();
+    }
 
     public void login_2(String username, String password) {
-
+//good
         driver.findElement(this.username).sendKeys(username);
         driver.findElement(this.password).sendKeys(password);
         driver.findElement(this.loginButton).click();
