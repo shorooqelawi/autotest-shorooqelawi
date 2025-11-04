@@ -1,0 +1,11 @@
+{
+  "login": {
+    "username": "problem_user",
+    "password": "secret_sauce"
+  },
+  "invalidLogin":
+  {
+    "username": "standard_user",
+    "password": "cdsecret_sauce"
+  }
+}

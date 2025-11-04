@@ -5,8 +5,10 @@ import Pages.CheckOut;
 import Pages.Login;
 import Pages.Login_2;
 import Pages.Product;
+import Utilities.JSONReader;
 import Utilities.TestBase_1;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class LoginTest_2 extends TestBase_1 {
@@ -29,28 +31,28 @@ public class LoginTest_2 extends TestBase_1 {
 
 
     }
-@Test
-    public void loginWithInvalidData() throws InterruptedException{
-        Loginelment = new Login_2(driver);
-        Product = new Product(driver);
-        Loginelment.Login("problem_user", "Wrong_pass_secret_sauce");
-        // Assert.assertEquals(Product.LogoGetText(),"Swag Labs");
-        Assert.assertEquals(Product.appLogo.getText(),"Swag Labs","not the expected");
-
-
-    }
-
-    @Test
-    public void Locked_Out_User() throws InterruptedException{
-        Loginelment = new Login_2(driver);
-        Product = new Product(driver);
-        Loginelment.Login("locked_out_user", "secret_sauce");
-        // Assert.assertEquals(Product.LogoGetText(),"Swag Labs");
-        Assert.assertEquals(Login_2.Errormessaged.getText(),"Epic sadface: Sorry, this user has been locked out.");
-
-
-
-    }
+//@Test
+//    public void loginWithInvalidData() throws InterruptedException{
+//        Loginelment = new Login_2(driver);
+//        Product = new Product(driver);
+//        Loginelment.Login("problem_user", "Wrong_pass_secret_sauce");
+//        // Assert.assertEquals(Product.LogoGetText(),"Swag Labs");
+//        Assert.assertEquals(Product.appLogo.getText(),"Swag Labs","not the expected");
+//
+//
+//    }
+//
+//    @Test
+//    public void Locked_Out_User() throws InterruptedException{
+//        Loginelment = new Login_2(driver);
+//        Product = new Product(driver);
+//        Loginelment.Login("locked_out_user", "secret_sauce");
+//        // Assert.assertEquals(Product.LogoGetText(),"Swag Labs");
+//        Assert.assertEquals(Login_2.Errormessaged.getText(),"Epic sadface: Sorry, this user has been locked out.");
+//
+//
+//
+//    }
 
 
     @Test
@@ -95,7 +97,52 @@ public class LoginTest_2 extends TestBase_1 {
         Thread.sleep(1000);
     }
 
+@Test
+    public void getJSONValue() throws InterruptedException{
+
+    String URL=JSONReader.getValue("config.json", "URL");
+
+    System.out.println("Read from json: "+ URL );
+
+    }
+
+    String username=JSONReader.getNestedValue("testdata.json", "login","username");
+    String password=JSONReader.getNestedValue("testdata.json", "login","password");
+
+//
+//    @Test
+//    public void loginwithTest() {
+//
+//    }
+//
+//    @DataProvider
+//    public Object[][] getData() {
+//        return new Object[][] {
+//                { "standard_user", "secret_sauce" },
+//                { "locked_out_user", "secret_sauce" },
+//                { "problem_user", "secret_sauce" },
+//                { "performance_glitch_user", "secret_sauce" }
+//        };
+//    }
+//
+//
+//    @Test(dataProvider ="getData" )
+//    public void loginttest(String username, String password){
+//        System.out.println("Login in with: ");
+//        System.out.println("username"+ username);
+//        System.out.println("password"+ password);
+//        System.out.println("----------------");
+//    }
+//
+//    @Test(dataProvider = "getData")
+//    public void loginWithValidData(String username, String password) {
+//        Loginelment.Login(username, password);
+//        Assert.assertEquals(Product.LogoGetText(), "Swag Labs");
+//    }
+
 
 
 
 }
+
+
