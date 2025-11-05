@@ -3,83 +3,52 @@ package Pages;
 import Utilities.TestBase_1;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-/**
- * Page Object Model for the Swag Labs Login Page.
- */
 public class LoginPageAI extends TestBase_1 {
 
-    /**
-     * Locates the username input field using its ID.
-     */
-    @FindBy(id = "user-name")
-    private WebElement usernameField;
+    public WebDriver driver;
 
-    /**
-     * Locates the password input field using its ID.
-     */
-    @FindBy(id = "password")
-    private WebElement passwordField;
-
-    /**
-     * Locates the login button using its ID.
-     */
-    @FindBy(id = "login-button")
-    private WebElement loginButton;
-
-    /**
-     * Locates the container for error messages.
-     */
-    @FindBy(css = "div.error-message-container")
-    private WebElement errorMessageContainer;
-
-    /**
-     * Enters the username and password into the respective fields and clicks the login button.
-     *
-     * @param username The username to enter.
-     * @param password The password to enter.
-     */
-    public void login(String username, String password) {
-        usernameField.sendKeys(username);
-        passwordField.sendKeys(password);
-        loginButton.click();
+    public LoginPageAI(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    /**
-     * Checks if the username input field is visible on the page.
-     *
-     * @return true if the username field is displayed, false otherwise.
-     */
-    public boolean isUsernameFieldVisible() {
-        return usernameField.isDisplayed();
+    @FindAll({
+            @FindBy(id = "user-name"),
+            @FindBy(name = "user-name")
+    })
+    WebElement userNameInput;
+
+    @FindAll({
+            @FindBy(id = "password"),
+            @FindBy(name = "password")
+    })
+    WebElement passwordInput;
+
+    @FindAll({
+            @FindBy(id = "login-button"),
+            @FindBy(name = "login-button")
+    })
+    WebElement loginButton;
+
+    private void enterUserName(String userNamevalue) {
+        sendKey(userNameInput, userNamevalue);
     }
 
-    /**
-     * Checks if the password input field is visible on the page.
-     *
-     * @return true if the password field is displayed, false otherwise.
-     */
-    public boolean isPasswordFieldVisible() {
-        return passwordField.isDisplayed();
+    private void enterPassword(String passwordValue) {
+        sendKey(passwordInput, passwordValue);
     }
 
-    /**
-     * Checks if the login button is visible on the page.
-     *
-     * @return true if the login button is displayed, false otherwise.
-     */
-    public boolean isLoginButtonVisible() {
-        return loginButton.isDisplayed();
+    private void clickLoginButton() {
+        click(loginButton);
     }
 
-    /**
-     * Checks if the error message container is visible.
-     * Note: The container might be visible even if it's empty.
-     *
-     * @return true if the error message container is displayed, false otherwise.
-     */
-    public boolean isErrorMessageContainerVisible() {
-        return errorMessageContainer.isDisplayed();
+    public void Login(String userName, String password) {
+        enterUserName(userName);
+        enterPassword(password);
+        clickLoginButton();
     }
 }
