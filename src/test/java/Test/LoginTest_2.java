@@ -109,39 +109,47 @@ public class LoginTest_2 extends TestBase_1 {
     String username=JSONReader.getNestedValue("testdata.json", "login","username");
     String password=JSONReader.getNestedValue("testdata.json", "login","password");
 
-//
-//    @Test
-//    public void loginwithTest() {
-//
-//    }
-//
-//    @DataProvider
-//    public Object[][] getData() {
-//        return new Object[][] {
-//                { "standard_user", "secret_sauce" },
-//                { "locked_out_user", "secret_sauce" },
-//                { "problem_user", "secret_sauce" },
-//                { "performance_glitch_user", "secret_sauce" }
-//        };
-//    }
-//
-//
-//    @Test(dataProvider ="getData" )
-//    public void loginttest(String username, String password){
-//        System.out.println("Login in with: ");
-//        System.out.println("username"+ username);
-//        System.out.println("password"+ password);
-//        System.out.println("----------------");
-//    }
-//
-//    @Test(dataProvider = "getData")
-//    public void loginWithValidData(String username, String password) {
-//        Loginelment.Login(username, password);
-//        Assert.assertEquals(Product.LogoGetText(), "Swag Labs");
-//    }
+
+    @Test
+    public void loginwithTest() {
+
+    }
+
+    @DataProvider
+    public Object[][] getData() {
+        return new Object[][] {
+                { "standard_user", "secret_sauce" },
+                { "locked_out_user", "secret_sauce" },
+                { "problem_user", "secret_sauce" },
+                { "performance_glitch_user", "secret_sauce" }
+        };
+    }
 
 
+    @Test(dataProvider ="getData" )
+    public void loginttest(String username, String password){
+        System.out.println("Login in with: ");
+        System.out.println("username"+ username);
+        System.out.println("password"+ password);
+        System.out.println("----------------");
+    }
 
+    @Test(dataProvider = "getData")
+    public void loginWithValidData(String username, String password) {
+        Loginelment.Login(username, password);
+        Assert.assertEquals(Product.LogoGetText(), "Swag Labs");
+    }
+
+
+@Test
+    public void scrollToLinkedin(){
+    Loginelment = new Login_2(driver);
+    Product = new Product(driver);
+
+    Loginelment.Login("problem_user", "secret_sauce");
+    scrollToElement(Product.linkedin);
+
+}
 
 }
 

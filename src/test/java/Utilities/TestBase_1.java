@@ -2,6 +2,7 @@ package Utilities;
 
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,6 +22,7 @@ public class TestBase_1 {
 
 
    public WebDriver driver;
+   public Utilities utils;
 
 @Parameters("browser")
     @BeforeMethod()
@@ -66,4 +68,11 @@ public void QuitDriver()throws InterruptedException{
         element.sendKeys(text);
     }
 
+public void scrollToElement(WebElement element){
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
 }
+
+}
+
+

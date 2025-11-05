@@ -20,6 +20,9 @@ public class Product extends TestBase_1 {
     @FindBy(className = "app_logo")
     public WebElement appLogo;
 
+    @FindBy(xpath = "//a[@data-test='social-linkedin']")
+    public WebElement linkedin;
+
     @FindBy(css = "span.title")
     WebElement pageTitle;
 
@@ -103,5 +106,8 @@ public class Product extends TestBase_1 {
 
     public void addProductToCart(){
 
+    }
+    public void clickLinkedin(){
+        click(linkedin);
     }
 }
